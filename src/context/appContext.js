@@ -67,7 +67,7 @@ const AppProvider = ({ children }) => {
 
     //  axios
     const authFetch = axios.create({
-      baseURL: '/api/v1',
+      baseURL: 'https://backend-up-n-down.vercel.app/api/v1',
     });
 
     // request
@@ -120,7 +120,7 @@ const AppProvider = ({ children }) => {
     const registerUser = async (currentUser) => {
         dispatch({ type: REGISTER_USER_BEGIN })
         try {
-            const response = await axios.post('/api/v1/auth/register', currentUser)
+            const response = await axios.post('https://backend-up-n-down.vercel.app/api/v1/auth/register', currentUser)
             // console.log(response)
             const { user, token, location } = response.data
             dispatch({ 
@@ -148,7 +148,7 @@ const AppProvider = ({ children }) => {
     const loginUser = async (currentUser) => {
         dispatch({ type: LOGIN_USER_BEGIN });
         try {
-          const { data } = await axios.post('/api/v1/auth/login', currentUser);
+          const { data } = await axios.post('https://backend-up-n-down.vercel.app/api/v1/auth/login', currentUser);
           const { user, token, location } = data;
       
           dispatch({
@@ -169,7 +169,7 @@ const AppProvider = ({ children }) => {
     const setupUser = async ({ currentUser, endPoint, alertText }) => {
         dispatch({ type: SETUP_USER_BEGIN });
         try {
-          const { data } = await axios.post(`/api/v1/auth/${endPoint}`, currentUser);
+          const { data } = await axios.post(`https://backend-up-n-down.vercel.app/api/v1/auth/${endPoint}`, currentUser);
       
           const { user, token, location } = data;
           dispatch({
